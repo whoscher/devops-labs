@@ -1,6 +1,6 @@
-FROM ubuntu:25.10
-RUN apt-get update && apt-get install -y bash procps && rm -rf /var/lib/apt/lists/*
+FROM alpine:3.19
+RUN apk add --no-cache bash procps
 COPY monitor.sh /usr/local/bin/monitor.sh
 RUN chmod +x /usr/local/bin/monitor.sh
 WORKDIR /data
-CMD ["/bin/bash", "/usr/local/bin/monitor.sh"]
+ENTRYPOINT ["/bin/bash", "/usr/local/bin/monitor.sh"]
